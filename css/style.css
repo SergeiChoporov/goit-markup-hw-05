@@ -11,6 +11,7 @@
   --social-bg-color: rgba(245, 244, 250, 1);
   --color-footer-icon: rgba(255, 255, 255, 0.1);
   --color-black: #000000;
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Base */
@@ -83,18 +84,13 @@ img {
   position: absolute;
   bottom: 0;
   left: 0;
+  padding: 27px;
+  text-align: center;
+  color: var(--color-white);
   width: 100%;
   background: rgba(47, 48, 58, 0.8);
 }
 
-.work-img-title {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.14;
-  padding: 27px 82px;
-  text-transform: uppercase;
-  color: var(--color-white);
-}
 
 .section {
   padding-top: 94px;
@@ -163,11 +159,14 @@ img {
 .nav-link,
 .contact-link {
   font-weight: 500;
-  line-height: 1.15;
+  line-height: 1.14;
   letter-spacing: 0.02em;
   display: flex;
+  position: relative;
+  padding-top: 32px;
+  padding-bottom: 32px;
   align-items: center;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 
 .nav-link:hover,
@@ -178,16 +177,11 @@ img {
   color: var(--color-accent);
 }
 
-.nav-link {
-  display: block;
-  padding: 32px 0;
-}
-
 .current::after {
   content: '';
   display: block;
-  position: relative;
-  top: 28px;
+  position: absolute;
+  bottom: -1px;
   width: 100%;
   height: 4px;
   background-color: var(--color-accent);
@@ -251,7 +245,7 @@ img {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition);
 }
 
 .button:hover,
@@ -295,7 +289,7 @@ img {
   padding: 6px 22px;
   background-color: #f5f4fa;
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
 }
 
 .filter-btn:hover,
@@ -363,9 +357,14 @@ img {
 
 .feature-title {
   color: var(--text-color-black);
-  font-size: 14px;
-  line-height: 1.15;
   margin-bottom: 10px;
+}
+
+.item-title{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase; 
 }
 
 .feature-text {
@@ -390,11 +389,41 @@ img {
   display: inline-block;
 }
 
-.portfolio-link:hover,
-.portfolio-link:focus {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+.portfolio-link:hover .portfolio-overlay, 
+.portfolio-link:focus .portfolio-overlay  {
+    transform: translateY(0);
+    opacity: 1;
 }
+
+
+.portfolio-link:hover,
+.portfolio-link:focus  {
+   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+   1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.portflio-box {
+   position: relative;
+   overflow: hidden;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  height: 100%;
+  width: 100%;
+  font-size: 18px;
+  padding: 63px 24px;
+  color: var(--color-white);
+  background-color: rgba(33, 150, 243, 0.9);
+  transition: transform var(--transition);
+} 
+
+
+
 
 
 
@@ -449,7 +478,7 @@ img {
 
 .address-title {
   color: rgba(255, 255, 255, 0.6);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 
 /**Portfolio**/
@@ -461,10 +490,6 @@ img {
 }
 
 .icone-title {
-  font-weight: 700;
-  line-height: 1.14;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
   color: var(--color-white);
   margin-bottom: 20px;
 }
@@ -485,11 +510,12 @@ img {
   height: 44px;
   background-color: var(--color-white);
   border-radius: 50%;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition);
 }
 
 .socials-icons {
   fill: var(--color-team-icons);
+  transition: fill var(--transition);
 }
 
 .footer .socials-link {
@@ -547,7 +573,7 @@ img {
   fill: var(--color-team-icons);
   border: 1px solid var(--color-team-icons);
   border-radius: 4px;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--transition), border-color var(--transition);
 }
 
 .client-link:hover,
@@ -566,6 +592,7 @@ img {
   height: 100%;
   z-index: 999;
   background: rgba(0, 0, 0, 0.2);
+  transition: opacity var(--transition), visibility var(--transition);
 }
 
 .modal {
@@ -579,6 +606,7 @@ img {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  transition: transform var(--transition);
 }
 
 /**icon close**/
@@ -608,8 +636,12 @@ img {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.backdrop.is-hidden {
+.backdrop.is-hidden{
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+   transform: translate(-50%, -50%) scale(0);
 }
