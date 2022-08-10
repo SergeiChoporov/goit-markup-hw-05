@@ -387,6 +387,7 @@ img {
 
 .portfolio-link {
   display: inline-block;
+  transition: box-shadow var(--transition);
 }
 
 .portfolio-link:hover .portfolio-overlay,
